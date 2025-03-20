@@ -20,31 +20,25 @@ const divide = (a, b) => a / b;
 const operate = (firstNumber, operator, secondNumber) => {
     switch (operator) {
         case "+":
-            result = add(firstNumber, secondNumber)
-            break
+            return add(firstNumber, secondNumber)
         case "-":
-            result = subtract(firstNumber, secondNumber)
-            break
+            return subtract(firstNumber, secondNumber)
         case "*":
-            result = multiply(firstNumber, secondNumber)
-            break
+            return multiply(firstNumber, secondNumber)
         case "/":
-            result = divide(firstNumber, secondNumber)
-            break
+            return divide(firstNumber, secondNumber)
         default:
             result = "Invalid operator"
     }
-    const finalResult = result;
-    softResetCalculator(result);
-    return finalResult;
 }
 
 const buttonClicked = (value) => {
     console.log(value)
 
     if (value === "=") {
-        displayValue = operate(Number(firstNumber), operator, Number(secondNumber))
-        updateDisplay(displayValue)
+        result = operate(Number(firstNumber), operator, Number(secondNumber))
+        updateDisplay(result)
+        softResetCalculator(result)
         return
     }
 
@@ -68,7 +62,7 @@ const updateDisplay = (value) => display.innerText = value
 const softResetCalculator = (result) => {
     firstNumber = result;
     secondNumber = "";
-    operator = "";
+    operator = null;
     nextNumber = false;
-    result;
+    result = null;
 }
