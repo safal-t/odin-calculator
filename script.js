@@ -7,10 +7,11 @@ let result = null;
 
 const display = document.querySelector(".calculator-screen")
 const buttons = document.querySelectorAll("button");
+const equalsBtn = document.querySelector(".equals-btn");
 
 // ADD EVENT LISTENERS
 buttons.forEach((button) => button.addEventListener("click", event => buttonClicked(event.target.innerHTML)))
-
+equalsBtn.disabled = true;
 // DECLARE FUNCTIONS    
 const add = (a, b) => Math.round((a + b) * 100) / 100;
 const subtract = (a, b) => Math.round((a - b) * 100) / 100;
@@ -53,6 +54,7 @@ const buttonClicked = (value) => {
 
     if (nextNumber === true) {
         secondNumber += value
+        equalsBtn.disabled = false;
     } else {
         firstNumber += value
     }
