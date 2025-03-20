@@ -35,7 +35,7 @@ const operate = (firstNumber, operator, secondNumber) => {
             result = "Invalid operator"
     }
     const finalResult = result;
-    resetCalculator();
+    softResetCalculator(result);
     return finalResult;
 }
 
@@ -65,18 +65,10 @@ const buttonClicked = (value) => {
 
 const updateDisplay = (value) => display.innerText = value
 
-const resetCalculator = () => {
-    firstNumber = "";
+const softResetCalculator = (result) => {
+    firstNumber = result;
     secondNumber = "";
     operator = "";
     nextNumber = false;
     result;
 }
-
-resetCalculator()
-
-
-
-
-
-
