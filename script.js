@@ -3,7 +3,7 @@ let firstNumber = "";
 let secondNumber = "";
 let operator = "";
 let nextNumber = false;
-let result;
+let result = null;
 
 const display = document.querySelector(".calculator-screen")
 const buttons = document.querySelectorAll("button");
@@ -40,13 +40,15 @@ const buttonClicked = (value) => {
         updateDisplay(result)
         softResetCalculator(result)
         return
-    }
-
-    if (value === "+" || value === "-" ||value === "*" || value === "/") {
+    } else if (value === "+" || value === "-" ||value === "*" || value === "/") {
         operator = value
         nextNumber = true
         return
-    } 
+    } else if (value === "AC") {
+        hardResetCalculator()
+        return
+    }
+    
 
     if (nextNumber === true) {
         secondNumber += value
@@ -65,4 +67,13 @@ const softResetCalculator = (result) => {
     operator = null;
     nextNumber = false;
     result = null;
+}
+
+const hardResetCalculator = () => {
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    nextNumber = false;
+    result = null;
+    updateDisplay(0);
 }
