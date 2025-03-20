@@ -33,7 +33,8 @@ const operate = (firstNumber, operator, secondNumber) => {
 }
 
 const buttonClicked = (value) => {
-    console.log(value)
+
+    display.innerText += value
 
     if (value === "=") {
         result = operate(Number(firstNumber), operator, Number(secondNumber))
