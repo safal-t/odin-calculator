@@ -1,5 +1,18 @@
+// DECLARE VARIABLES
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+let nextNumber = false;
+let result;
+
+const display = document.querySelector(".calculator-screen")
+const buttons = document.querySelectorAll("button");
+
+// ADD EVENT LISTENERS
+buttons.forEach((button) => button.addEventListener("click", button => buttonClicked(button.target.innerHTML)))
+
 // DECLARE FUNCTIONS    
-const add = (a, b) => console.log(a + b);
+const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
@@ -7,23 +20,31 @@ const divide = (a, b) => a / b;
 const operate = (firstNumber, operator, secondNumber) => {
     switch (operator) {
         case "+":
-            return add(firstNumber, secondNumber)
+            result = add(firstNumber, secondNumber)
+            break
         case "-":
-            return subtract(firstNumber, secondNumber)
+            result = subtract(firstNumber, secondNumber)
+            break
         case "*":
-            return multiply(firstNumber, secondNumber)
+            result = multiply(firstNumber, secondNumber)
+            break
         case "/":
-            return divide(firstNumber, secondNumber)
+            result = divide(firstNumber, secondNumber)
+            break
         default:
-            return "Invalid operator"
+            result = "Invalid operator"
     }
+    const finalResult = result;
+    resetCalculator();
+    return finalResult;
 }
 
 const buttonClicked = (value) => {
     console.log(value)
 
     if (value === "=") {
-        operate(Number(firstNumber), operator, Number(secondNumber))
+        displayValue = operate(Number(firstNumber), operator, Number(secondNumber))
+        updateDisplay(displayValue)
         return
     }
 
@@ -42,16 +63,20 @@ const buttonClicked = (value) => {
     return value
 }
 
-// DECLARE VARIABLES
-let firstNumber = "";
-let secondNumber = "";
-let operator = "";
-let nextNumber = false;
+const updateDisplay = (value) => display.innerText = value
+
+const resetCalculator = () => {
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    nextNumber = false;
+    result;
+}
+
+resetCalculator()
 
 
-const buttons = document.querySelectorAll("button");
 
 
 
-// ADD EVENT LISTENERS
-buttons.forEach((button) => button.addEventListener("click", button => buttonClicked(button.target.innerHTML)))
+
