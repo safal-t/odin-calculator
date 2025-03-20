@@ -12,10 +12,10 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => button.addEventListener("click", button => buttonClicked(button.target.innerHTML)))
 
 // DECLARE FUNCTIONS    
-const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
+const add = (a, b) => Math.round((a + b) * 100) / 100;
+const subtract = (a, b) => Math.round((a - b) * 100) / 100;
+const multiply = (a, b) => Math.round((a * b) * 100) / 100;
+const divide = (a, b) => Math.round((a / b) * 100) / 100;
 
 const operate = (firstNumber, operator, secondNumber) => {
     switch (operator) {
