@@ -9,7 +9,7 @@ const display = document.querySelector(".calculator-screen")
 const buttons = document.querySelectorAll("button");
 
 // ADD EVENT LISTENERS
-buttons.forEach((button) => button.addEventListener("click", button => buttonClicked(button.target.innerHTML)))
+buttons.forEach((button) => button.addEventListener("click", event => buttonClicked(event.target.innerHTML)))
 
 // DECLARE FUNCTIONS    
 const add = (a, b) => Math.round((a + b) * 100) / 100;
