@@ -16,8 +16,13 @@ equalsBtn.disabled = true;
 const add = (a, b) => Math.round((a + b) * 100) / 100;
 const subtract = (a, b) => Math.round((a - b) * 100) / 100;
 const multiply = (a, b) => Math.round((a * b) * 100) / 100;
-const divide = (a, b) => Math.round((a / b) * 100) / 100;
-
+const divide = (a, b) => {
+    if (b == 0) {
+        hardResetCalculator()
+        return display.innerText = "Zero division error";
+    }
+    return Math.round((a / b) * 100) / 100;
+}
 const operate = (firstNumber, operator, secondNumber) => {
     switch (operator) {
         case "+":
@@ -51,14 +56,18 @@ const buttonClicked = (value) => {
         return
     }
     
-
     if (nextNumber === true) {
         secondNumber += value
         equalsBtn.disabled = false;
     } else {
+        softResetCalculator()
+        updateDisplay(value)
+        firstNumber = "";
         firstNumber += value
     }
     
+
+
     return value
 }
 
@@ -69,7 +78,7 @@ const softResetCalculator = (result) => {
     secondNumber = "";
     operator = null;
     nextNumber = false;
-    result = null;
+    equalsBtn.disabled = true;
 }
 
 const hardResetCalculator = () => {
@@ -79,4 +88,5 @@ const hardResetCalculator = () => {
     nextNumber = false;
     result = null;
     updateDisplay(0);
+    equalsBtn.disabled = true;
 }
