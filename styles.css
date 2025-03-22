@@ -22,9 +22,10 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
-    background-color: rgb(213, 196, 214);
     padding: 20px;
     border-radius: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    gap: 10px;
 }
 
 .calculator-buttons {
@@ -34,15 +35,17 @@ body {
 .calculator-numbers {
     display: flex;
     flex-wrap: wrap;
+    gap: 1px;
 }
 
 .calculator-numbers * {
-    flex-basis: 33%;
+    flex-basis: 32%;
 }
 
 .calculator-operators {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .calculator-operators * {
@@ -50,5 +53,15 @@ body {
 }
 
 .calculator-screen {
-    background-color: rgb(233, 229, 234);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+button {
+    background-color: transparent;
+    border: 1px solid rgb(200, 200, 200);
+    width: 30px;
+    height: 50px;
+    border-radius: 30px;
 }
