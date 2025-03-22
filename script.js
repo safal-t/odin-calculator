@@ -9,6 +9,8 @@ const display = document.querySelector(".calculator-screen")
 const buttons = document.querySelectorAll("button");
 const equalsBtn = document.querySelector(".equals-btn");
 
+let lastBtnClicked;
+
 // ADD EVENT LISTENERS
 buttons.forEach((button) => button.addEventListener("click", event => buttonClicked(event.target.innerHTML)))
 equalsBtn.disabled = true;
@@ -46,6 +48,7 @@ const buttonClicked = (value) => {
         result = operate(Number(firstNumber), operator, Number(secondNumber))
         updateDisplay(result)
         softResetCalculator(result)
+        lastBtnClicked = "="
         return
     } else if (value === "+" || value === "-" ||value === "*" || value === "/") {
         operator = value
@@ -55,18 +58,19 @@ const buttonClicked = (value) => {
         hardResetCalculator()
         return
     }
+
     
     if (nextNumber === true) {
         secondNumber += value
         equalsBtn.disabled = false;
     } else {
-        softResetCalculator()
-        updateDisplay(value)
-        firstNumber = "";
+        if (lastBtnClicked === "=") {
+            softResetCalculator()
+            updateDisplay(value)
+            firstNumber = "";
+        }
         firstNumber += value
     }
-    
-
 
     return value
 }
@@ -89,4 +93,6 @@ const hardResetCalculator = () => {
     result = null;
     updateDisplay(0);
     equalsBtn.disabled = true;
+    lastBtnClicked = null;
+
 }
