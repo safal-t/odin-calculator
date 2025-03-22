@@ -10,6 +10,9 @@ html , body{
 
 body {
     background-color: rgb(93, 31, 87);
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 .calculator-container {
